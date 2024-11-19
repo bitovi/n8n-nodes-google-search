@@ -16,7 +16,7 @@ export class GoogleSearch implements INodeType {
 		version: 1,
 		description: 'Google Search Node',
 		defaults: {
-			name: 'GoogleSearch',
+			name: 'Google Search',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
