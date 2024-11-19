@@ -126,7 +126,7 @@ async function handlePagination(
 	const aggregatedResult: IDataObject[] = [];
 	let nextStartIndex: number | undefined = 1;
 	const returnAll = this.getNodeParameter('returnAll') as boolean;
-	let limit = 2;
+	let limit = 0;
 	if (!returnAll) {
 		limit = this.getNodeParameter('limit') as number;
 		resultOptions.maxResults = limit;
