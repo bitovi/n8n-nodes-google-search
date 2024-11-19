@@ -176,7 +176,7 @@ export class GoogleSearch implements INodeType {
 						},
 					},
 					{
-						displayName: 'Image Color\\tType',
+						displayName: 'Image Color Type',
 						name: 'imgColorType',
 						type: 'options',
 						options: [
