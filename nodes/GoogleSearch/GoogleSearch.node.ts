@@ -134,6 +134,7 @@ async function handlePagination(
 	resultOptions.paginate = true;
 
 	while (nextStartIndex) {
+		resultOptions.options.qs!.startIndex = nextStartIndex;
 		const responseData = await this.makeRoutingRequest(resultOptions);
 
 		for (const page of responseData) {
@@ -146,8 +147,8 @@ async function handlePagination(
 				return aggregatedResult.slice(0, limit).map((item) => ({ json: item }));
 			}
 
-			resultOptions.options.qs!.startIndex =
-				((page.json.queries as  IDataObject)?.nextPage as IDataObject[])?.[0]?.startIndex as number | undefined;
+			nextStartIndex =
+				((page.json.queries as IDataObject)?.nextPage as IDataObject[])?.[0]?.startIndex as number | undefined;
 		}
 	}
 

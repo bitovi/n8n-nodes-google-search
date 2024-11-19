@@ -1,6 +1,6 @@
 {
   "name": "@bitovi/n8n-nodes-google-search",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "N8N node to connect to Google Search",
   "keywords": [
     "n8n-community-node-package"
