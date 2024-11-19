@@ -1,9 +1,4 @@
-import {
-	IAuthenticateGeneric,
-	Icon,
-	ICredentialType,
-	INodeProperties,
-} from 'n8n-workflow';
+import { IAuthenticateGeneric, Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class GoogleSearchCredentialsApi implements ICredentialType {
 	name = 'googleSearchCredentialsApi';
