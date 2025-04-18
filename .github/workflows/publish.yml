@@ -1,0 +1,53 @@
+name: Publish
+
+# This builds and pushes the package to NPM. If something goes wrong, then the package is
+# not published. The error should be corrected and the release and tag should be deleted
+# before trying again.
+
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Catch package.json version mismatch
+        run: |
+          ver=v$(node -p "require('./package.json').version")
+          echo "Version in package.json: $ver"
+          echo "Version in release: ${{ github.event.release.tag_name }}"
+          if [ "$ver" != "${{ github.event.release.tag_name }}" ]; then
+            exit 1
+          fi
+      
+      - uses: pnpm/action-setup@v4
+
+      - name: Install packages
+        run: pnpm i
+
+      - name: Run CI
+        run: pnpm run --if-present ci
+
+      - name: Build project
+        run: pnpm run --if-present build
+
+      - name: Run tests
+        run: pnpm run --if-present test
+
+      - run: npm publish --access public
+        env:
+          # setup-node creates an .npmrc that references NODE_AUTH_TOKEN
+          # secrets.NPM_TOKEN must be provided in the repo settings.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
