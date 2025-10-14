@@ -107,6 +107,59 @@ The node supports automatic pagination when "Return All" is enabled, allowing yo
 - **SEO Analysis**: Research keywords and analyze search results
 - **Data Collection**: Gather information from web sources programmatically
 
+## Using as an AI Agent Tool
+
+This node can be used as a tool in n8n's AI Agent workflows, allowing AI assistants to automatically search the web when needed.
+
+### Prerequisites
+- n8n version 1.40 or higher (with AI Agent support)
+- Environment variable: `N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true`
+
+### Setting the Environment Variable
+
+**For Docker:**
+```bash
+docker run -e N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true n8nio/n8n
+```
+
+Or in your `docker-compose.yml`:
+```yaml
+environment:
+  - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+```
+
+**For npm installation:**
+```bash
+export N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+npx n8n start
+```
+
+**For Windows (PowerShell):**
+```powershell
+$env:N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE="true"
+npx n8n start
+```
+
+### Setup Steps
+1. Set the environment variable as shown above
+2. Install this community node through n8n's Community Nodes settings
+3. Restart n8n if it was already running
+4. In your workflow, add an **AI Agent** node
+5. Click **Add Tool** in the AI Agent configuration
+6. Select **Google Search** from the available tools
+
+### How It Works
+- The AI agent will automatically call the Google Search tool when it determines a web search is needed
+- The tool returns search results including titles, links, and snippets
+- Results are limited to 50 by default (configurable with the "Limit" parameter)
+- All "Additional Fields" are available for advanced filtering
+
+### Tips for AI Tool Usage
+- Use descriptive prompts that might require web searches (e.g., "What are the latest trends in...")
+- The AI will decide when to use the search tool based on the conversation context
+- You can combine this with other tools for comprehensive AI workflows
+- Monitor your Google API quota as the AI may make multiple search requests
+
 ## Need help or have questions?
 
 Need guidance on leveraging AI agents or N8N for your business? Our [AI Agents workshop](https://hubs.ly/Q02X-9Qq0) will equip you with the knowledge and tools necessary to implement successful and valuable agentic workflows.

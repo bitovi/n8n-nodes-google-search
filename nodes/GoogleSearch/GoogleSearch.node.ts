@@ -14,12 +14,14 @@ export class GoogleSearch implements INodeType {
 		name: 'googleSearch',
 		group: ['transform'],
 		version: 1,
-		description: 'Google Search Node',
+		description: 'Search the web using Google Programmable Search',
 		defaults: {
 			name: 'Google Search',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
+		// @ts-ignore - usableAsTool is supported at runtime but not in older type definitions
+		usableAsTool: true,
 		credentials: [
 			{
 				name: 'googleSearchCredentialsApi',
@@ -62,6 +64,8 @@ export class GoogleSearch implements INodeType {
 				displayName: 'Search Query',
 				name: 'searchQuery',
 				type: 'string',
+				required: true,
+				description: 'What to search for',
 				default: '',
 				routing: {
 					request: {
