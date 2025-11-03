@@ -18,6 +18,7 @@ Google Search is a web search engine that allows you to find information on the 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 Alternatively:
+
 - Make sure to allow community nodes with `N8N_COMMUNITY_PACKAGES_ENABLED=true`
 - Once logged in to your N8N web UI, go to `/settings/community-nodes` and type `@bitovi/n8n-nodes-google-search`
 
@@ -26,12 +27,14 @@ Alternatively:
 The Google Search node supports the following operations:
 
 ### Custom Search
+
 - **Search Query**: Perform searches using Google's Custom Search API
 - **Return All**: Option to return all results or limit to a specific number
 - **Limit**: Set maximum number of results to return (when Return All is disabled)
 
 ### Additional Search Parameters
-- **Date Restrict**: Restrict results to a specific time period (past day, week, month, 6 months, or year)
+
+- **Date Restrict**: Restrict results to a specific time period (past 24 hours, week, month, or year)
 - **Exact Terms**: Search for exact phrases
 - **Exclude Terms**: Exclude specific terms from search results
 - **File Type**: Filter results by file type (e.g., pdf, doc, etc.)
@@ -56,10 +59,12 @@ The Google Search node supports the following operations:
 To use this node, you need to authenticate with Google's Custom Search API. You'll need:
 
 ### Prerequisites
+
 1. A Google Cloud Platform account
 2. A Google Custom Search Engine set up
 
 ### Setting up credentials
+
 1. **Create a Custom Search Engine**:
    - Go to [Google Programmable Search Engine](https://programmablesearchengine.google.com)
    - Create a new search engine
@@ -86,6 +91,7 @@ This node has been tested with the latest versions of n8n and should work with a
 ## Usage
 
 ### Basic Search
+
 1. Add the Google Search node to your workflow
 2. Configure your credentials (Search Engine ID and API Key)
 3. Enter your search query
@@ -93,17 +99,21 @@ This node has been tested with the latest versions of n8n and should work with a
 5. Execute the workflow
 
 ### Advanced Search Options
+
 Use the "Additional Fields" section to:
-- Restrict results to a specific time period (past day, week, month, etc.)
+
+- Restrict results to a specific time period (past 24 hours, week, month, etc.)
 - Sort results by date or relevance
 - Filter results by file type, language, or site
 - Search for exact phrases or exclude specific terms
 - Filter images by size, color, or type
 
 ### Pagination
+
 The node supports automatic pagination when "Return All" is enabled, allowing you to retrieve large result sets efficiently.
 
 ### Example Use Cases
+
 - **Content Research**: Search for articles, papers, or resources on specific topics
 - **Competitor Analysis**: Monitor mentions of your brand or competitors
 - **Lead Generation**: Find contact information or company details
@@ -115,35 +125,41 @@ The node supports automatic pagination when "Return All" is enabled, allowing yo
 This node can be used as a tool in n8n's AI Agent workflows, allowing AI assistants to automatically search the web when needed.
 
 ### Prerequisites
+
 - n8n version 1.40 or higher (with AI Agent support)
 - Environment variable: `N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true`
 
 ### Setting the Environment Variable
 
 **For Docker:**
+
 ```bash
 docker run -e N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true n8nio/n8n
 ```
 
 Or in your `docker-compose.yml`:
+
 ```yaml
 environment:
   - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
 ```
 
 **For npm installation:**
+
 ```bash
 export N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
 npx n8n start
 ```
 
 **For Windows (PowerShell):**
+
 ```powershell
 $env:N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE="true"
 npx n8n start
 ```
 
 ### Setup Steps
+
 1. Set the environment variable as shown above
 2. Install this community node through n8n's Community Nodes settings
 3. Restart n8n if it was already running
@@ -152,12 +168,14 @@ npx n8n start
 6. Select **Google Search** from the available tools
 
 ### How It Works
+
 - The AI agent will automatically call the Google Search tool when it determines a web search is needed
 - The tool returns search results including titles, links, and snippets
 - Results are limited to 50 by default (configurable with the "Limit" parameter)
 - All "Additional Fields" are available for advanced filtering
 
 ### Tips for AI Tool Usage
+
 - Use descriptive prompts that might require web searches (e.g., "What are the latest trends in...")
 - The AI will decide when to use the search tool based on the conversation context
 - You can combine this with other tools for comprehensive AI workflows
