@@ -31,6 +31,7 @@ The Google Search node supports the following operations:
 - **Limit**: Set maximum number of results to return (when Return All is disabled)
 
 ### Additional Search Parameters
+- **Date Restrict**: Restrict results to a specific time period (past day, week, month, 6 months, or year)
 - **Exact Terms**: Search for exact phrases
 - **Exclude Terms**: Exclude specific terms from search results
 - **File Type**: Filter results by file type (e.g., pdf, doc, etc.)
@@ -48,6 +49,7 @@ The Google Search node supports the following operations:
 - **Search Type**: Specify search type (image search, etc.)
 - **Site Search**: Restrict search to a specific site
 - **Site Search Filter**: Include or exclude results from site search
+- **Sort By**: Sort results by relevance (default) or date
 
 ## Credentials
 
@@ -92,10 +94,11 @@ This node has been tested with the latest versions of n8n and should work with a
 
 ### Advanced Search Options
 Use the "Additional Fields" section to:
+- Restrict results to a specific time period (past day, week, month, etc.)
+- Sort results by date or relevance
 - Filter results by file type, language, or site
 - Search for exact phrases or exclude specific terms
 - Filter images by size, color, or type
-- Sort results by date or relevance
 
 ### Pagination
 The node supports automatic pagination when "Return All" is enabled, allowing you to retrieve large result sets efficiently.

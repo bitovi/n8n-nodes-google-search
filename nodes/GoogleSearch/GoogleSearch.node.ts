@@ -417,6 +417,42 @@ export class GoogleSearch implements INodeType {
 						},
 					},
 					{
+						displayName: 'Date Restrict',
+						name: 'dateRestrict',
+						type: 'options',
+						description: 'Restrict results to a specific time period',
+						options: [
+							{
+								name: 'Anytime',
+								value: '',
+							},
+							{
+								name: 'Past 24 Hours',
+								value: 'd1',
+							},
+							{
+								name: 'Past Month',
+								value: 'm1',
+							},
+							{
+								name: 'Past Week',
+								value: 'w1',
+							},
+							{
+								name: 'Past Year',
+								value: 'y1',
+							},
+						],
+						default: '',
+						routing: {
+							request: {
+								qs: {
+									dateRestrict: '={{ $value }}',
+								},
+							},
+						},
+					},
+					{
 						displayName: 'Search Safety Level',
 						name: 'safe',
 						type: 'options',
@@ -435,6 +471,30 @@ export class GoogleSearch implements INodeType {
 							request: {
 								qs: {
 									safe: '={{ $value }}',
+								},
+							},
+						},
+					},
+					{
+						displayName: 'Sort By',
+						name: 'sort',
+						type: 'options',
+						description: 'Sort search results',
+						options: [
+							{
+								name: 'Relevance',
+								value: '',
+							},
+							{
+								name: 'Date',
+								value: 'date',
+							},
+						],
+						default: '',
+						routing: {
+							request: {
+								qs: {
+									sort: '={{ $value }}',
 								},
 							},
 						},
